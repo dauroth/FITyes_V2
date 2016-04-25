@@ -23,6 +23,7 @@ public class CalendarFragment extends Fragment {
         return parentView;
     }
 
+
     private void initView(){
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 getActivity(),

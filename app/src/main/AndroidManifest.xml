@@ -40,10 +40,11 @@
         <activity android:name=".Reg_Second" />
         <activity
             android:name=".BMICalculator"
-            android:label="@string/bmi_label"></activity>
+            android:label="@string/bmi_label" />
         <activity
             android:name=".PulseCalculator"
-            android:label="@string/pulse_label"></activity>
+            android:label="@string/pulse_label" />
+
     </application>
 
 </manifest>

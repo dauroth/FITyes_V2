@@ -17,5 +17,7 @@
     <string name="startPulse">Inditás</string>
     <string name="pulse_label">FITYES Beta - Pulzus kalkulátor</string>
     <string name="bmi_label">FITYES Beta - BMI kalkulátor</string>
+    <string name="title_activity_settings">Beállitások</string>
+
 
 </resources>
