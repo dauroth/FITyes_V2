@@ -3,6 +3,7 @@ package com.mattlab.gym.fityes_v2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
@@ -15,8 +16,8 @@ import com.facebook.appevents.AppEventsLogger;
  */
 public class Initialize extends AppCompatActivity {
 
-    public boolean login;
-    public boolean firstep;
+    public boolean isLoggedin;
+    public boolean firstStep;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,13 @@ public class Initialize extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_initialize);
         AppEventsLogger.activateApp(this);
+
+        isLoggedin = true;
+        firstStep = true;
+
+        if (isLoggedin) {
+            init();
+        }
 
         Button btn = (Button) findViewById(R.id.btn_reg);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -38,5 +46,17 @@ public class Initialize extends AppCompatActivity {
         Intent myIntent = new Intent(Initialize.this, Registration.class);
         myIntent.putExtra("key", "2"); //Optional parameters
         Initialize.this.startActivity(myIntent);
+    }
+
+    public void init() {
+        if (isLoggedin == true && firstStep == true) {
+            Intent myIntent = new Intent(Initialize.this, MenuActivity.class);
+            myIntent.putExtra("loggedin", true); //loggedin igaz
+            Initialize.this.startActivity(myIntent);
+        } else if (firstStep == false) {
+            Intent myIntent = new Intent(Initialize.this, FirstStep.class);
+            myIntent.putExtra("loggedin", true); //loggedin igaz
+            Initialize.this.startActivity(myIntent);
+        }
     }
 }
