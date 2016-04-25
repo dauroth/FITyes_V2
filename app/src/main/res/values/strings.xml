@@ -2,4 +2,7 @@
 <resources>
     <string name="app_name">FITYES Béta</string>
     <string name="firststep">Első lépések</string>
+    <string name="facebook_app_id">1764456833788100</string>
+    <string name="fb_login_protocol_scheme">1764456833788100</string>
+    <string name="login">Bejelentkezés</string>
 </resources>
