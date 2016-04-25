@@ -8,5 +8,14 @@
     <string name="has">Hasizom edzés inditása</string>
     <string name="kar">Karizom edzés inditása</string>
     <string name="time">Az edzés ideje 10 perc \nNincs szükséges kellék</string>
+    <string name="bmi">BMI kalkulátor</string>
+    <string name="bmidesc">BMI (testtömeg-index) kalkulátorunk segítségével megtudhatja, hogy mennyi az Ön BMI értéke, és az melyik tartományba esik.</string>
     <string name="timekar">Az edzés ideje 7 perc \nSzükséges kellék: 1db (m)(me) kézi súlyzó</string>
+    <string name="startbmi">Inditás</string>
+    <string name="pulse">Edzési pulzustartomány kalkulátor</string>
+    <string name="pulsedesc">Számolja ki Ön is edzéscéljához megfelelő pulzustartományt!</string>
+    <string name="startPulse">Inditás</string>
+    <string name="pulse_label">FITYES Beta - Pulzus kalkulátor</string>
+    <string name="bmi_label">FITYES Beta - BMI kalkulátor</string>
+
 </resources>

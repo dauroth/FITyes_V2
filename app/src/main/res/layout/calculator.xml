@@ -1,16 +1,145 @@
-<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/bmi_card"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kalkulátorok"
-            style="@style/fragment_text"
-            android:layout_gravity="center"
-            android:id="@+id/textView"/>
+            android:clickable="true"
+            android:layout_margin="15dp">
+            android:layout_margin="8dp"
+            android:longClickable="true">
 
-</FrameLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_alignParentTop="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/indicator" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:padding="8dp"
+                    android:text="@string/bmi"
+                    android:textColor="#222"
+                    android:textStyle="bold"
+                    android:textSize="22dp"
+                    android:gravity="center_horizontal"
+                    android:layout_below="@+id/thumbnail"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/desc"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title"
+                    android:maxLines="3"
+                    android:padding="8dp"
+                    android:text="@string/bmidesc"
+                    android:textColor="#666"
+                    android:textSize="14dp"
+                    android:textStyle="italic" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_selector"
+                    android:textColor="@android:color/white"
+                    android:text="@string/startbmi"
+                    android:layout_below="@+id/desc"
+                    android:onClick="startBMI"
+                    android:textSize="17sp"
+                    android:padding="12dp"
+                    android:id="@+id/bmi_start_button"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="26dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="15dp" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/pulse_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_margin="15dp">
+            android:layout_margin="8dp"
+            android:longClickable="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_alignParentTop="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pulse" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:padding="8dp"
+                    android:text="@string/pulse"
+                    android:textColor="#222"
+                    android:textStyle="bold"
+                    android:textSize="22dp"
+                    android:gravity="center_horizontal"
+                    android:layout_below="@+id/thumbnail"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/desc"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title"
+                    android:maxLines="3"
+                    android:padding="8dp"
+                    android:text="@string/pulsedesc"
+                    android:textColor="#666"
+                    android:textSize="14dp"
+                    android:textStyle="italic" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_selector"
+                    android:textColor="@android:color/white"
+                    android:text="@string/startbmi"
+                    android:layout_below="@+id/desc"
+                    android:onClick="startPULSE"
+                    android:textSize="17sp"
+                    android:padding="12dp"
+                    android:id="@+id/pulse_start_button"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="26dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="15dp" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>
