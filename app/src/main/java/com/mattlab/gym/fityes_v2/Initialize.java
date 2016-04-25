@@ -11,6 +11,7 @@ import com.facebook.appevents.AppEventsLogger;
 
 /**
  * Created by EXT on 2016. 04. 25..
+ * Author: Máté Németh
  */
 public class Initialize extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class Initialize extends AppCompatActivity {
         setContentView(R.layout.activity_initialize);
         AppEventsLogger.activateApp(this);
 
-        Button btn = (Button) findViewById(R.id.btn_save_next_first);
+        Button btn = (Button) findViewById(R.id.btn_reg);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

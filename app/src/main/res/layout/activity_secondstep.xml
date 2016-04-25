@@ -100,7 +100,7 @@
         android:background="@drawable/button_selector"
         android:textColor="@android:color/white"
         android:text="Mentés és továbblépés"
-        android:onClick="NextStep_Second"
+        android:onClick="next_step_second"
         android:textSize="17sp"
         android:padding="12dp"
         android:id="@+id/next_step_second"

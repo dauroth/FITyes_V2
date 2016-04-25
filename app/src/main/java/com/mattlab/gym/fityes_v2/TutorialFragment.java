@@ -6,14 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import com.mattlab.gym.fityes_v2.ResideMenu;
+
 /**
  * User: special
  * Date: 13-12-22
  * Time: 下午1:33
  * Mail: specialcyci@gmail.com
  */
-public class HomeFragment extends Fragment {
+public class TutorialFragment extends Fragment {
 
     private View parentView;
     private ResideMenu resideMenu;
@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
         MenuActivity parentActivity = (MenuActivity) getActivity();
         resideMenu = parentActivity.getResideMenu();
 
-        /*parentView.findViewById(R.id.btn_open_menu).setOnClickListener(new View.OnClickListener() {
+        parentView.findViewById(R.id.btn_open_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
 
         // add gesture operation's ignored views
         FrameLayout ignored_view = (FrameLayout) parentView.findViewById(R.id.ignored_view);
-        resideMenu.addIgnoredView(ignored_view);*/
+        resideMenu.addIgnoredView(ignored_view);
     }
 
 }

@@ -5,37 +5,39 @@
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.AppCompat.Light">
-        <uses-permission android:name="android.permission.INTERNET" />
-
+        android:theme="@style/Theme.AppCompat.Light"
+        android:allowBackup="true">
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
         <activity
             android:name=".FirstStep"
-            android:label="@string/firststep"></activity>
+            android:label="@string/firststep" />
         <activity
             android:name=".MenuActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
-        <activity android:name=".SecondStep" />
-        <activity android:name=".ThirdStep" />
-        <activity
-            android:name=".Initialize"
-            android:label="@string/login">
+            android:theme="@android:style/Theme.Light.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SecondStep" />
+        <activity android:name=".ThirdStep" />
+        <activity
+            android:name=".Initialize"
+            android:label="@string/login">
+
+        </activity>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".Registration"></activity>
+        <activity android:name=".Registration" />
+        <activity android:name=".Reg_Second" />
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

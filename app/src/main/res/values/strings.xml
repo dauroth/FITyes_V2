@@ -5,4 +5,8 @@
     <string name="facebook_app_id">1764456833788100</string>
     <string name="fb_login_protocol_scheme">1764456833788100</string>
     <string name="login">Bejelentkezés</string>
+    <string name="has">Hasizom edzés inditása</string>
+    <string name="kar">Karizom edzés inditása</string>
+    <string name="time">Az edzés ideje 10 perc \nNincs szükséges kellék</string>
+    <string name="timekar">Az edzés ideje 7 perc \nSzükséges kellék: 1db (m)(me) kézi súlyzó</string>
 </resources>

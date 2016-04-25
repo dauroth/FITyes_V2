@@ -1,73 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@android:color/white">
-
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignParentTop="true"
-            android:layout_above="@+id/ignored_view"
-            android:gravity="center">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <ImageView
-                android:layout_width="60dp"
-                android:layout_height="120dp"
-                android:scaleType="fitCenter"
-                android:id="@+id/imageView"
-                android:layout_gravity="center"
-                android:src="@drawable/gesture"/>
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 1. Húzd balra vagy jobbra a menü megnyitásához"
-                android:id="@+id/textView" android:layout_gravity="center" android:clickable="false"
-                android:textColor="#ffacacac" android:textSize="17sp" android:padding="5dp"/>
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_selector"
-                android:textColor="@android:color/white"
-                android:text="2. Kattints ide a menü megnyitásához"
-                android:textSize="17sp"
-                android:padding="12dp"
-                android:id="@+id/btn_open_menu"
-                android:layout_gravity="center"
-                android:layout_marginTop="4dp"/>
-
-    </LinearLayout>
-
-    <FrameLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="120dp"
-            android:padding="10dp"
-            android:layout_gravity="bottom"
-            android:id="@+id/ignored_view"
-            android:layout_alignParentBottom="true">
-
-        <ImageView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/frame"/>
+                android:layout_height="match_parent">
 
-        <TextView
+                <ImageView
+                    android:id="@+id/thumbnail"
+                android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_alignParentTop="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/card_img" />
+
+                <TextView
+                    android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Teszt zóna, disable touch."
-                android:textSize="17sp"
-                android:textColor="#9a9a9a"
-                android:id="@+id/textView1"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:padding="5dp"/>
-    </FrameLayout>
+                    android:layout_below="@+id/thumbnail"
+                    android:maxLines="3"
+                    android:padding="8dp"
+                    android:text="@string/has"
+                    android:textColor="#222"
+                    android:textStyle="bold"
+                    android:textSize="22dp" />
 
-</RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title"
+                    android:maxLines="3"
+                    android:padding="8dp"
+                    android:text="@string/time"
+                    android:textColor="#666"
+                    android:textSize="14dp" />
 
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/thumbnails"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_alignParentTop="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/kar_img" />
+
+                <TextView
+                    android:id="@+id/titles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/thumbnails"
+                    android:maxLines="3"
+                    android:padding="8dp"
+                    android:text="@string/kar"
+                    android:textColor="#222"
+                    android:textStyle="bold"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/titles"
+                    android:maxLines="3"
+                    android:padding="8dp"
+                    android:text="@string/timekar"
+                    android:textColor="#666"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</ScrollView>

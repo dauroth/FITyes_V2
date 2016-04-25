@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Regisztráció (1/2. lépés)"
+        android:text="Regisztráció (2/2. lépés)"
         android:id="@+id/textView16"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -36,11 +36,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Név"
+        android:text="Jelszó*"
         android:id="@+id/textView21"
         android:layout_below="@+id/textView20"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="25dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -50,13 +50,14 @@
         android:id="@+id/editText6"
         android:layout_below="@+id/textView21"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:password="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Születési ideje"
+        android:text="Jelszó, másodszor*"
         android:id="@+id/textView22"
         android:layout_below="@+id/editText6"
         android:layout_centerHorizontal="true"
@@ -70,41 +71,45 @@
         android:id="@+id/editText7"
         android:layout_below="@+id/textView22"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="E-mail cim*"
-        android:id="@+id/textView23"
-        android:layout_below="@+id/editText7"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/editText8"
-        android:layout_below="@+id/textView23"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:password="true" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/button_selector"
         android:textColor="@android:color/white"
-        android:text="Következő lépés"
-        android:onClick="btn_reg_next"
+        android:text="Mentés"
+        android:onClick="btn_regsave"
         android:textSize="17sp"
         android:padding="12dp"
-        android:id="@+id/btn_reg_next"
+        android:id="@+id/btn_regsave"
         android:layout_gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="48dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox"
+        android:checked="false"
+        android:layout_marginTop="59dp"
+        android:layout_below="@+id/editText7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="A felhasználói feltételeket megértettem és elfogadom! (A szövegre kattintva, böngészőben megjelenik)"
+        android:id="@+id/TermsLink"
+        android:gravity="center_vertical"
+        android:layout_alignTop="@+id/checkBox"
+        android:layout_toRightOf="@+id/checkBox"
+        android:layout_toEndOf="@+id/checkBox"
+        android:autoLink="web"
+        android:linksClickable="true" />
 </RelativeLayout>
