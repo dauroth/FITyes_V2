@@ -13,18 +13,18 @@ public class SecondStep extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_secondstep); //test
 
-        Button btn = (Button) findViewById(R.id.btn_save_next);
+        Button btn = (Button) findViewById(R.id.next_step_second);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NextStep(v);
+                NextStep_Second(v);
             }
         });
     }
 
 
-    public void NextStep(View v) {
+    public void NextStep_Second(View v) {
         Intent myIntent = new Intent(SecondStep.this, ThirdStep.class);
         myIntent.putExtra("key", "2"); //Optional parameters
         SecondStep.this.startActivity(myIntent);

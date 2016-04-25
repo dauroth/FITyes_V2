@@ -13,17 +13,13 @@ public class FirstStep extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firststep);
 
-        Button btn = (Button) findViewById(R.id.btn_save_next);
-
+        Button btn = (Button) findViewById(R.id.btn_save_next_first);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NextStep(v);
             }
         });
-
-
-
     }
 
     public void NextStep(View v) {
