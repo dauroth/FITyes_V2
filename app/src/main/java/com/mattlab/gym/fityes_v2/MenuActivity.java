@@ -31,7 +31,10 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         setUpMenu();
         if( savedInstanceState == null )
             changeFragment(new HomeFragment());
+
+
     }
+
 
     private void setUpMenu() {
 

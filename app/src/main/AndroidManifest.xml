@@ -44,7 +44,9 @@
         <activity
             android:name=".PulseCalculator"
             android:label="@string/pulse_label" />
+        <activity android:name=".MainActivity">
 
+        </activity>
     </application>
 
 </manifest>
