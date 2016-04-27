@@ -1,4 +1,4 @@
-package com.mattlab.gym.fityes_v2;
+package com.mattlab.gym.fityes_v2.Activitys;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.mattlab.gym.fityes_v2.R;
 
 public class Reg_Second extends AppCompatActivity {
 

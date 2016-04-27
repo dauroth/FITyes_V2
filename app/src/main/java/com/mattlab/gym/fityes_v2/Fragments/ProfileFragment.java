@@ -1,4 +1,4 @@
-package com.mattlab.gym.fityes_v2;
+package com.mattlab.gym.fityes_v2.Fragments;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,6 +19,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.widget.ProfilePictureView;
+import com.mattlab.gym.fityes_v2.R;
 
 import org.w3c.dom.Text;
 

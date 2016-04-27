@@ -1,4 +1,4 @@
-package com.mattlab.gym.fityes_v2;
+package com.mattlab.gym.fityes_v2.Fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -25,10 +25,14 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.mattlab.gym.fityes_v2.Activitys.FirstStep;
+import com.mattlab.gym.fityes_v2.Activitys.MenuActivity;
+import com.mattlab.gym.fityes_v2.Utilities.JSONParser;
+import com.mattlab.gym.fityes_v2.R;
+import com.mattlab.gym.fityes_v2.Activitys.Registration;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

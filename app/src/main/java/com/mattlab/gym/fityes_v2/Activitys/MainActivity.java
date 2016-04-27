@@ -1,4 +1,4 @@
-package com.mattlab.gym.fityes_v2;
+package com.mattlab.gym.fityes_v2.Activitys;
 
 import android.app.Activity;
 
@@ -11,11 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.login.LoginResult;
+import com.mattlab.gym.fityes_v2.Utilities.JSONParser;
+import com.mattlab.gym.fityes_v2.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

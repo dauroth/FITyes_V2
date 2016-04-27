@@ -1,7 +1,9 @@
-package com.mattlab.gym.fityes_v2;
+package com.mattlab.gym.fityes_v2.Activitys;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.mattlab.gym.fityes_v2.R;
 
 public class ThirdStep extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.mattlab.gym.fityes_v2;
+package com.mattlab.gym.fityes_v2.Activitys;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,9 +6,15 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
-import com.mattlab.gym.fityes_v2.ResideMenu;
-import com.mattlab.gym.fityes_v2.ResideMenuItem;
+
+import com.mattlab.gym.fityes_v2.Fragments.CalculatorFragment;
+import com.mattlab.gym.fityes_v2.Fragments.CalendarFragment;
+import com.mattlab.gym.fityes_v2.Fragments.HomeFragment;
+import com.mattlab.gym.fityes_v2.Fragments.ProfileFragment;
+import com.mattlab.gym.fityes_v2.R;
+import com.mattlab.gym.fityes_v2.Utilities.Menu.ResideMenu;
+import com.mattlab.gym.fityes_v2.Utilities.Menu.ResideMenuItem;
+import com.mattlab.gym.fityes_v2.Fragments.SettingsFragment;
 
 public class MenuActivity extends FragmentActivity implements View.OnClickListener{
 

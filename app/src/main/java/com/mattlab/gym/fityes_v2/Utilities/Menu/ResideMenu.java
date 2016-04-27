@@ -1,16 +1,16 @@
-package com.mattlab.gym.fityes_v2;
+package com.mattlab.gym.fityes_v2.Utilities.Menu;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.*;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
 
+import com.mattlab.gym.fityes_v2.R;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;

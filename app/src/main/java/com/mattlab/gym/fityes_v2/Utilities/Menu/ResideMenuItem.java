@@ -1,4 +1,4 @@
-package com.mattlab.gym.fityes_v2;
+package com.mattlab.gym.fityes_v2.Utilities.Menu;
 
 import android.content.Context;
 import android.view.LayoutInflater;
