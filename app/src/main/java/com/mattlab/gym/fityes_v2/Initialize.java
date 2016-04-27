@@ -2,9 +2,13 @@ package com.mattlab.gym.fityes_v2;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,13 +16,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
 /**
@@ -30,13 +43,102 @@ public class Initialize extends AppCompatActivity {
     public boolean isLoggedin;
     public boolean firstStep;
 
+    private LoginButton loginButton;
+    private TextView textView17;
+    CallbackManager callbackManager;
+    ProfileTracker profTrack;
+
+    private FacebookCallback<LoginResult> callback = new FacebookCallback<LoginResult>() {
+        @Override
+        public void onSuccess(LoginResult loginResult) {
+            AccessToken accessToken = loginResult.getAccessToken();
+            Profile profile = Profile.getCurrentProfile();
+            Intent myIntent = new Intent(Initialize.this, MenuActivity.class);
+            myIntent.putExtra("key", "2"); //Optional parameters
+            Initialize.this.startActivity(myIntent);
+            finish();
+
+            if (profile != null) {
+                textView17.setText("Üdv: " + profile.getName());
+                Toast.makeText(Initialize.this, profile.getName(),
+                        Toast.LENGTH_LONG).show();
+            }
+        }
+
+        @Override
+        public void onCancel() {
+
+        }
+
+        @Override
+        public void onError(FacebookException error) {
+
+        }
+    };
+
+
+
     // ----------------------------------------------- INIT START ----------------------------------------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_initialize);
-        AppEventsLogger.activateApp(this);
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "com.example.android.facebookloginsample",  // replace with your unique package name
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.e("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
+
+        Profile profile;
+        profile = Profile.getCurrentProfile();
+
+        if (profile != null) {
+            Intent myIntent = new Intent(Initialize.this, MenuActivity.class);
+            myIntent.putExtra("key", "2"); //Optional parameters
+            Initialize.this.startActivity(myIntent);
+            finish();
+        }
+
+
+        profile = Profile.getCurrentProfile();
+
+        //textView17.setText("Üdv: " + profile.getName());
+
+
+        profTrack = new ProfileTracker() {
+            @Override
+            protected void onCurrentProfileChanged(
+                    Profile oldProfile,
+                    Profile currentProfile) {
+                // App code
+
+
+                Log.d("current profile", "" + currentProfile);
+            }
+        };
+
+
+        callbackManager = CallbackManager.Factory.create();
+
+        loginButton = (LoginButton) findViewById(R.id.login_button);
+
+        loginButton.setReadPermissions("email");
+        loginButton.registerCallback(callbackManager, callback);
+
+
+
+
+
 
         isLoggedin = false;
         firstStep = true;
@@ -72,6 +174,12 @@ public class Initialize extends AppCompatActivity {
                 Reg(v);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     class PostAsync extends AsyncTask<String, String, JSONObject> {
