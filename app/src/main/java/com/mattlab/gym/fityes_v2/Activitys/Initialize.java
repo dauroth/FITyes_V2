@@ -1,10 +1,13 @@
-package com.mattlab.gym.fityes_v2.Fragments;
+package com.mattlab.gym.fityes_v2.Activitys;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +16,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -25,11 +27,8 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.mattlab.gym.fityes_v2.Activitys.FirstStep;
-import com.mattlab.gym.fityes_v2.Activitys.MenuActivity;
-import com.mattlab.gym.fityes_v2.Utilities.JSONParser;
 import com.mattlab.gym.fityes_v2.R;
-import com.mattlab.gym.fityes_v2.Activitys.Registration;
+import com.mattlab.gym.fityes_v2.Utilities.JSONParser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,25 +47,24 @@ public class Initialize extends AppCompatActivity {
     public boolean firstStep;
 
     private LoginButton loginButton;
-    private TextView textView17;
     CallbackManager callbackManager;
     ProfileTracker profTrack;
+
 
     private FacebookCallback<LoginResult> callback = new FacebookCallback<LoginResult>() {
         @Override
         public void onSuccess(LoginResult loginResult) {
             AccessToken accessToken = loginResult.getAccessToken();
             Profile profile = Profile.getCurrentProfile();
+            ProgressDialog pDialog = new ProgressDialog(Initialize.this);
+            pDialog.setMessage("Bejelentkezés...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
             Intent myIntent = new Intent(Initialize.this, MenuActivity.class);
             myIntent.putExtra("key", "2"); //Optional parameters
             Initialize.this.startActivity(myIntent);
             finish();
-
-            if (profile != null) {
-                textView17.setText("Üdv: " + profile.getName());
-                Toast.makeText(Initialize.this, profile.getName(),
-                        Toast.LENGTH_LONG).show();
-            }
         }
 
         @Override
@@ -105,6 +103,7 @@ public class Initialize extends AppCompatActivity {
 
         Profile profile;
         profile = Profile.getCurrentProfile();
+        isNetworkOnline();
 
         if (profile != null) {
             Intent myIntent = new Intent(Initialize.this, MenuActivity.class);
@@ -212,6 +211,7 @@ public class Initialize extends AppCompatActivity {
             try {
 
                 HashMap<String, String> params = new HashMap<>();
+                params.put("action", "login");
                 params.put("name", args[0]);
                 params.put("password", args[1]);
 
@@ -294,6 +294,26 @@ public class Initialize extends AppCompatActivity {
             myIntent.putExtra("loggedin", true); //loggedin igaz
             Initialize.this.startActivity(myIntent);
         }
+    }
+
+    public boolean isNetworkOnline() {
+        boolean status = false;
+        try {
+            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getNetworkInfo(0);
+            if (netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED) {
+                status = true;
+            } else {
+                netInfo = cm.getNetworkInfo(1);
+                if (netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED)
+                    status = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return status;
+
     }
 
 

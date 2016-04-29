@@ -25,12 +25,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="A következő részben regisztrálhat új profilt magának. A csillaggal jelölt részek kitöltése kötelező"
+        android:text=" A csillaggal jelölt részek kitöltése kötelező"
         android:id="@+id/textView20"
+        android:gravity="center_horizontal"
+        android:textStyle="italic"
         android:layout_below="@+id/textView16"
         android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal"
-        android:textStyle="italic" />
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,7 +48,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editText6"
+        android:id="@+id/password"
         android:layout_below="@+id/textView21"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
@@ -59,7 +60,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Jelszó, másodszor*"
         android:id="@+id/textView22"
-        android:layout_below="@+id/editText6"
+        android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp" />
 
@@ -68,7 +69,7 @@
         android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
-        android:id="@+id/editText7"
+        android:id="@+id/secondPassword"
         android:layout_below="@+id/textView22"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
@@ -96,7 +97,7 @@
         android:id="@+id/checkBox"
         android:checked="false"
         android:layout_marginTop="59dp"
-        android:layout_below="@+id/editText7"
+        android:layout_below="@+id/secondPassword"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editText6"
+        android:id="@+id/password"
         android:layout_below="@+id/textView21"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp" />
@@ -58,7 +58,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Születési ideje"
         android:id="@+id/textView22"
-        android:layout_below="@+id/editText6"
+        android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp" />
 
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
-        android:id="@+id/editText7"
+        android:id="@+id/secondPassword"
         android:layout_below="@+id/textView22"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp" />
@@ -78,7 +78,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="E-mail cim*"
         android:id="@+id/textView23"
-        android:layout_below="@+id/editText7"
+        android:layout_below="@+id/secondPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp" />
 
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/editText8"
+        android:id="@+id/textMail"
         android:layout_below="@+id/textView23"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp" />

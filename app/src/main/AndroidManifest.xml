@@ -27,7 +27,7 @@
         <activity android:name=".Activitys.ThirdStep" />
 
         <activity
-            android:name=".Fragments.Initialize"
+            android:name=".Activitys.Initialize"
             android:label="@string/login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
