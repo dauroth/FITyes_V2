@@ -20,12 +20,9 @@
         <activity
             android:name=".Activitys.MenuActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Light.NoTitleBar">
-
-        </activity>
+            android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
         <activity android:name=".Activitys.SecondStep" />
         <activity android:name=".Activitys.ThirdStep" />
-
         <activity
             android:name=".Activitys.Initialize"
             android:label="@string/login">
@@ -48,9 +45,8 @@
         <activity
             android:name=".Activitys.PulseCalculator"
             android:label="@string/pulse_label" />
-        <activity android:name=".Activitys.MainActivity">
-
-        </activity>
+        <activity android:name=".Activitys.MainActivity"></activity>
+        <activity android:name=".Tester.AdTester"></activity>
     </application>
 
 </manifest>
