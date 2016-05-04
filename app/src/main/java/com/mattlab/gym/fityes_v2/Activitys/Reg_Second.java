@@ -87,7 +87,7 @@ public class Reg_Second extends AppCompatActivity {
 
 
             pDialog = new ProgressDialog(Reg_Second.this);
-            pDialog.setMessage("Bejelentkezés...");
+            pDialog.setMessage("Regisztráció...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
@@ -147,7 +147,7 @@ public class Reg_Second extends AppCompatActivity {
 
             if (success == 1) {
                 pDialog = new ProgressDialog(Reg_Second.this);
-                pDialog.setMessage("Sikeres bejelentkezés...");
+                pDialog.setMessage("Sikeres regisztráció...");
                 pDialog.setIndeterminate(false);
                 pDialog.setCancelable(true);
                 pDialog.show();
