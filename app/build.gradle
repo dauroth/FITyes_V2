@@ -36,4 +36,6 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:4.11.0'
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
 }

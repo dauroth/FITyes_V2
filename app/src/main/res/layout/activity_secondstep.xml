@@ -42,57 +42,74 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp" />
 
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="hüvelyk"
-        android:id="@+id/radioButton3"
-        android:layout_below="@+id/textView8"
-        android:layout_alignLeft="@+id/textView8"
-        android:layout_alignStart="@+id/textView8"
-        android:layout_marginTop="20dp" />
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="centiméter"
-        android:id="@+id/radioButton4"
-        android:layout_alignBottom="@+id/radioButton3"
-        android:layout_alignRight="@+id/textView8"
-        android:layout_alignEnd="@+id/textView8"
-        android:layout_marginTop="20dp" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Súly mértékegysége"
         android:id="@+id/textView9"
-        android:layout_marginTop="54dp"
-        android:layout_below="@+id/radioButton3"
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/radioGroup"
         android:layout_centerHorizontal="true" />
 
-    <RadioButton
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="kg"
-        android:id="@+id/radioButton5"
-        android:checked="false"
-        android:layout_below="@+id/textView9"
-        android:layout_alignRight="@+id/radioButton3"
-        android:layout_alignEnd="@+id/radioButton3"
-        android:layout_marginTop="20dp" />
+        android:layout_below="@+id/textView8"
+        android:layout_centerHorizontal="true">
 
-    <RadioButton
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hüvelyk"
+            android:id="@+id/radioButton3"
+            android:layout_below="@+id/textView8"
+            android:layout_alignLeft="@+id/textView8"
+            android:layout_alignStart="@+id/textView8"
+            android:layout_marginTop="20dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="centiméter"
+            android:id="@+id/radioButton4"
+            android:layout_alignBottom="@+id/radioButton3"
+            android:layout_alignRight="@+id/textView8"
+            android:layout_alignEnd="@+id/textView8"
+            android:layout_marginTop="20dp" />
+
+    </RadioGroup>
+
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="font"
-        android:id="@+id/radioButton6"
-        android:checked="false"
-        android:layout_below="@+id/textView9"
-        android:layout_alignLeft="@+id/radioButton4"
-        android:layout_alignStart="@+id/radioButton4"
-        android:layout_marginTop="20dp" />
+        android:layout_above="@+id/next_step_second"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="73dp"
+        android:id="@+id/radioGroup">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kg"
+            android:id="@+id/radioButton5"
+            android:checked="false"
+            android:layout_below="@+id/textView9"
+            android:layout_alignRight="@+id/radioButton3"
+            android:layout_alignEnd="@+id/radioButton3"
+            android:layout_marginTop="20dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="font"
+            android:id="@+id/radioButton6"
+            android:checked="false"
+            android:layout_below="@+id/textView9"
+            android:layout_alignLeft="@+id/radioButton4"
+            android:layout_alignStart="@+id/radioButton4"
+            android:layout_marginTop="20dp" />
+    </RadioGroup>
 
     <Button
         android:layout_width="wrap_content"

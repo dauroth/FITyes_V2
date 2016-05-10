@@ -86,7 +86,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/thumbnail"
+                    android:id="@+id/thumbnails"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_alignParentTop="true"
@@ -94,7 +94,7 @@
                     android:src="@drawable/pulse" />
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/titles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="3"
@@ -104,14 +104,14 @@
                     android:textStyle="bold"
                     android:textSize="22dp"
                     android:gravity="center_horizontal"
-                    android:layout_below="@+id/thumbnail"
+                    android:layout_below="@+id/thumbnails"
                     android:layout_centerHorizontal="true" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:id="@+id/desc"
+                    android:id="@+id/descs"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/title"
+                    android:layout_below="@+id/titles"
                     android:maxLines="3"
                     android:padding="8dp"
                     android:text="@string/pulsedesc"
@@ -125,7 +125,7 @@
                     android:background="@drawable/button_selector"
                     android:textColor="@android:color/white"
                     android:text="@string/startbmi"
-                    android:layout_below="@+id/desc"
+                    android:layout_below="@+id/descs"
                     android:onClick="startPULSE"
                     android:textSize="17sp"
                     android:padding="12dp"

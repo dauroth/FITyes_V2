@@ -35,33 +35,51 @@
         android:textStyle="bold|italic"
         android:paddingLeft="25dp" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editAge"
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Az Ön neme..."
         android:id="@+id/textView4"
-        android:layout_marginTop="46dp"
-        android:layout_below="@+id/textView3"
+        android:layout_alignTop="@+id/radioSex"
         android:layout_centerHorizontal="true" />
 
-    <RadioButton
+    <RadioGroup
+        android:id="@+id/radioSex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Férfi"
-        android:id="@+id/radioButton"
-        android:layout_below="@+id/textView4"
+        android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4" />
+        android:layout_marginTop="38dp"
+        android:gravity="fill_horizontal|center_vertical|center_horizontal">
 
-    <RadioButton
+        <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nő"
         android:id="@+id/radioButton2"
-        android:layout_below="@+id/textView4"
-        android:layout_alignRight="@+id/textView4"
-        android:layout_alignEnd="@+id/textView4" />
+            android:layout_marginTop="30dp"
+            android:layout_alignLeft="@+id/radioButton" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Férfi"
+            android:id="@+id/radioButton"
+            android:layout_below="@+id/textView4"
+            android:layout_alignRight="@+id/textView4" />
+
+    </RadioGroup>
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,19 +87,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="és kora"
         android:id="@+id/textView5"
-        android:layout_marginTop="32dp"
-        android:layout_below="@+id/radioButton"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_marginTop="28dp"
-        android:layout_below="@+id/textView5"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/radioSex"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -97,5 +105,6 @@
         android:layout_marginBottom="26dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>
