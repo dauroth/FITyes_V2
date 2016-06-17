@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FITYES Béta</string>
+    <string name="app_name" translatable="false">FITYES Beta</string>
     <string name="firststep">Első lépések</string>
-    <string name="facebook_app_id">1764456833788100</string>
-    <string name="fb_login_protocol_scheme">1764456833788100</string>
+    <string name="facebook_app_id" translatable="false">855021101271180</string>
+    <string name="fb_login_protocol_scheme" translatable="false">855021101271180</string>
     <string name="login">Bejelentkezés</string>
     <string name="has">Hasizom edzés inditása</string>
     <string name="kar">Karizom edzés inditása</string>
@@ -18,8 +18,9 @@
     <string name="pulse_label">FITYES Beta - Pulzus kalkulátor</string>
     <string name="bmi_label">FITYES Beta - BMI kalkulátor</string>
     <string name="title_activity_settings">Beállitások</string>
-    <string name="banner_ad_unit_id">ca-app-pub-1022277907588148/9426868513</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-1022277907588148/9426868513</string>
     <string name="play">Play</string>
+    <string name="group">Csoport keresése</string>
 
 
 </resources>

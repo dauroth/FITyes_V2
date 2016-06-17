@@ -9,12 +9,13 @@ import android.view.View;
 
 import com.mattlab.gym.fityes_v2.Fragments.CalculatorFragment;
 import com.mattlab.gym.fityes_v2.Fragments.CalendarFragment;
+import com.mattlab.gym.fityes_v2.Fragments.GroupsFragment;
 import com.mattlab.gym.fityes_v2.Fragments.HomeFragment;
 import com.mattlab.gym.fityes_v2.Fragments.ProfileFragment;
+import com.mattlab.gym.fityes_v2.Fragments.SettingsFragment;
 import com.mattlab.gym.fityes_v2.R;
 import com.mattlab.gym.fityes_v2.Utilities.Menu.ResideMenu;
 import com.mattlab.gym.fityes_v2.Utilities.Menu.ResideMenuItem;
-import com.mattlab.gym.fityes_v2.Fragments.SettingsFragment;
 
 public class MenuActivity extends FragmentActivity implements View.OnClickListener{
 
@@ -25,6 +26,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
     private ResideMenuItem itemCalendar;
     private ResideMenuItem itemSettings;
     private ResideMenuItem itemCalculator;
+    private ResideMenuItem itemGroups;
 
     /**
      * Called when the activity is first created.
@@ -54,21 +56,24 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         resideMenu.setScaleValue(0.9f);
 
         // create menu items;
-        itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Főoldal");
-        itemProfile  = new ResideMenuItem(this, R.drawable.icon_profile,  "Profil");
+        itemHome = new ResideMenuItem(this, R.drawable.icon_home, "Főoldal");
+        itemProfile = new ResideMenuItem(this, R.drawable.icon_profile, "Profil");
         itemCalendar = new ResideMenuItem(this, R.drawable.icon_calendar, "Naptár");
         itemSettings = new ResideMenuItem(this, R.drawable.icon_settings, "Beállitások");
         itemCalculator = new ResideMenuItem(this, R.drawable.icon_calendar, "Kalkulátorok");
+        itemGroups = new ResideMenuItem(this, R.drawable.icon_groups, "Csoportok");
 
         itemHome.setOnClickListener(this);
         itemProfile.setOnClickListener(this);
         itemCalendar.setOnClickListener(this);
         itemSettings.setOnClickListener(this);
         itemCalculator.setOnClickListener(this);
+        itemGroups.setOnClickListener(this);
 
         resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemProfile, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemCalculator, ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemGroups, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemCalendar, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemSettings, ResideMenu.DIRECTION_RIGHT);
 
@@ -107,6 +112,8 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
             changeFragment(new SettingsFragment());
         }else if (view == itemCalculator){
             changeFragment(new CalculatorFragment());
+        } else if (view == itemGroups) {
+            changeFragment(new GroupsFragment());
         }
 
         resideMenu.closeMenu();

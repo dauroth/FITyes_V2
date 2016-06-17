@@ -18,12 +18,7 @@ import com.facebook.login.widget.ProfilePictureView;
 import com.mattlab.gym.fityes_v2.Activitys.Initialize;
 import com.mattlab.gym.fityes_v2.R;
 
-/**
- * User: special
- * Date: 13-12-22
- * Time: 下午1:31
- * Mail: specialcyci@gmail.com
- */
+
 public class ProfileFragment extends Fragment {
     private View rootView;
     TextView profileName;

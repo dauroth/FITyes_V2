@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 
 import com.mattlab.gym.fityes_v2.R;
 
-public class SettingsFragment extends Fragment {
+public class GroupsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.settings, container, false);
+        return inflater.inflate(R.layout.groups, container, false);
     }
 
 }

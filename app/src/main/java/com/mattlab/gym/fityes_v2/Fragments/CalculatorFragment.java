@@ -13,13 +13,6 @@ import com.mattlab.gym.fityes_v2.Activitys.PulseCalculator;
 import com.mattlab.gym.fityes_v2.R;
 import com.mattlab.gym.fityes_v2.Utilities.Menu.ResideMenu;
 
-/**
- * User: special
- * Date: 13-12-22
- * Time: 下午1:31
- * Mail: specialcyci@gmail.com
- */
-
 
 public class CalculatorFragment extends Fragment {
 

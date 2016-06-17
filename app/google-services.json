@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "271908477641",
+    "firebase_url": "https://fityes-18c3c.firebaseio.com",
+    "project_id": "fityes-18c3c",
+    "storage_bucket": "fityes-18c3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271908477641:android:32d7757adbf3827d",
+        "android_client_info": {
+          "package_name": "com.mattlab.gym.fityes_v2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271908477641-1rfg2if5n3o6ji960mq5rsdho4s3knm6.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "271908477641-2p9jirvvto92af8j9f03arvlg3agp7ru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoJMB2WE_k_iWz-V3oGJwqnuyofCzh-xI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-30686613-5"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
