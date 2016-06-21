@@ -1,8 +1,6 @@
 package com.mattlab.gym.fityes_v2.Activitys;
 
 import android.app.Activity;
-
-
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,8 +10,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
-import com.mattlab.gym.fityes_v2.Utilities.JSONParser;
 import com.mattlab.gym.fityes_v2.R;
+import com.mattlab.gym.fityes_v2.Utilities.JSONParser;
 
 import org.json.JSONException;
 import org.json.JSONObject;

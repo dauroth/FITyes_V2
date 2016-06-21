@@ -76,7 +76,7 @@ public class Reg_Second extends AppCompatActivity {
         private ProgressDialog pDialog;
 
 
-        private static final String LOGIN_URL = "http://www.ext.hu/api/index.php";
+        private static final String LOGIN_URL = "http://www.ext.hu/fityes/api/app_api.php";
 
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";
