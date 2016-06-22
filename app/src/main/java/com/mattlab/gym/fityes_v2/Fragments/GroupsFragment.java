@@ -1,5 +1,6 @@
 package com.mattlab.gym.fityes_v2.Fragments;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mattlab.gym.fityes_v2.Activitys.DisplayListView;
 import com.mattlab.gym.fityes_v2.R;
 import com.mattlab.gym.fityes_v2.Utilities.Adapters.GroupAdapter;
 import com.mattlab.gym.fityes_v2.Utilities.GroupSetter;
@@ -44,8 +45,7 @@ public class GroupsFragment extends Fragment {
 
         new BackgroundTask().execute();
 
-        listView = (ListView) getActivity().findViewById(R.id.listView);
-        listView.setAdapter(groupAdapter);
+
         return inflater.inflate(R.layout.groups, container, false);
     }
 
@@ -101,20 +101,28 @@ public class GroupsFragment extends Fragment {
         }
 
         protected void onPostExecute(String result) {
-            TextView textview = (TextView) getActivity().findViewById(R.id.textView_test);
-            textview.setText(result);
+            //TextView textview = (TextView) getActivity().findViewById(R.id.textView_test);
+            //textview.setText(result);
             json_string = result;
+            if (json_string == null) {
+                Toast.makeText(getActivity(), "Hiba a lekérdezésben", Toast.LENGTH_LONG).show();
+            } else {
+                Intent intent = new Intent(getActivity(), DisplayListView.class);
+                intent.putExtra("json_data", json_string); //Optional parameters
+                getActivity().startActivity(intent);
+
+
+            }
+
+            json_string = result;
+
         }
 
 
     }
 
     public void parseJSON(View view) {
-        if (json_string == null) {
-            Toast.makeText(getActivity(), "Hiba a lekérdezésben", Toast.LENGTH_LONG).show();
-        } else {
-            FillUpList();
-        }
+
     }
 
     public void FillUpList() {
@@ -133,6 +141,11 @@ public class GroupsFragment extends Fragment {
                 groupAdapter.add(groupSetter);
                 count++;
             }
+            listView = (ListView) getActivity().findViewById(R.id.listView);
+
+            groupAdapter = new GroupAdapter(getActivity(), R.layout.row_layout);
+
+            listView.setAdapter(groupAdapter);
 
 
         } catch (JSONException e) {
