@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +62,7 @@ public class GroupsFragment extends Fragment {
 
         @Override
         protected void onPreExecute() {
-            json_url = "http://ext.hu/fityes/api/app_api_test.php";
+            json_url = "http://ext.hu/fityes/api/functions.php?action=fetchgroups";
         }
 
         @Override
@@ -110,7 +111,7 @@ public class GroupsFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), DisplayListView.class);
                 intent.putExtra("json_data", json_string); //Optional parameters
                 getActivity().startActivity(intent);
-
+                Log.e("TESZTADAT", json_string);
 
             }
 
@@ -131,6 +132,7 @@ public class GroupsFragment extends Fragment {
             jsonArray = jsonObject.getJSONArray("server_response");
             int count = 0;
             String name, desc, number;
+
             while (count < jsonArray.length()) {
                 JSONObject JO = jsonArray.getJSONObject(count);
                 name = JO.getString("name");

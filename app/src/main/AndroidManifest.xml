@@ -28,11 +28,6 @@
         <activity
             android:name=".Activitys.Initialize"
             android:label="@string/login">
-            <intent-filter android:label="@string/app_name">
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -60,7 +55,14 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".Activitys.DisplayListView"></activity>
+        <activity android:name=".Activitys.DisplayListView" />
+        <activity android:name=".Activitys.ExcersizeList">
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

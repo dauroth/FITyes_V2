@@ -46,6 +46,7 @@ public class Initialize extends AppCompatActivity {
     public boolean isLoggedin;
     public boolean firstStep;
 
+
     private LoginButton loginButton;
     CallbackManager callbackManager;
     ProfileTracker profTrack;
