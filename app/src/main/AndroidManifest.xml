@@ -28,6 +28,11 @@
         <activity
             android:name=".Activitys.Initialize"
             android:label="@string/login">
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -43,7 +48,7 @@
             android:name=".Activitys.PulseCalculator"
             android:label="@string/pulse_label"
             android:theme="@style/Theme.AppCompat.Light" />
-        <activity android:name=".Activitys.MainActivity" />
+        <activity android:name=".Activitys.MainActivity"></activity>
         <activity android:name=".Tester.AdTester" />
         <activity android:name=".Activitys.Excersize" />
         <activity android:name=".Tester.FullAd" />
@@ -56,13 +61,9 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".Activitys.DisplayListView" />
-        <activity android:name=".Activitys.ExcersizeList">
-            <intent-filter android:label="@string/app_name">
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Activitys.ExcersizeList" />
+        <activity android:name=".Activitys.RegWithFace" />
+        <activity android:name=".Activitys.RegWithFaceNext"></activity>
     </application>
 
 </manifest>

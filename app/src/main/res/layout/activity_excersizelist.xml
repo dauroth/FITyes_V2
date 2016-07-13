@@ -6,11 +6,37 @@
     android:layout_height="match_parent"
     tools:context="com.mattlab.gym.fityes_v2.Activitys.ExcersizeList">
 
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:id="@+id/lists"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="70dp">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
         android:clipChildren="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_alignBottom="@+id/lists">
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/button_selector"
+            android:textColor="@android:color/white"
+            android:text="Edzés inditása"
+            android:onClick="btn_startEXER"
+            android:paddingTop="20dp"
+            android:textSize="17sp"
+            android:id="@+id/btn_startEXER"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
 </RelativeLayout>
 

@@ -6,6 +6,8 @@
     <string name="fb_login_protocol_scheme" translatable="false">855021101271180</string>
     <string name="login">Bejelentkezés</string>
     <string name="has">Hasizom edzés inditása</string>
+    <string name="testexer">Edzéslista lekérése</string>
+    <string name="test_text">Edzések listája \nLokálisan állitott szinttel</string>
     <string name="kar">Karizom edzés inditása</string>
     <string name="time">Az edzés ideje 10 perc \nNincs szükséges kellék</string>
     <string name="bmi">BMI kalkulátor</string>

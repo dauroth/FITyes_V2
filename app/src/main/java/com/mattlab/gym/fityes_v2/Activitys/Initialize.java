@@ -62,10 +62,17 @@ public class Initialize extends AppCompatActivity {
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
-            Intent myIntent = new Intent(Initialize.this, MenuActivity.class);
+
+            String user_fb_id = profile.getId();
+
+            Log.e("FB_ID", user_fb_id);
+
+            new FB_Login().execute(user_fb_id, "login_fb");
+
+            /*Intent myIntent = new Intent(Initialize.this, MenuActivity.class);
             myIntent.putExtra("key", "2"); //Optional parameters
             Initialize.this.startActivity(myIntent);
-            finish();
+            finish();*/
         }
 
         @Override
@@ -76,6 +83,104 @@ public class Initialize extends AppCompatActivity {
         @Override
         public void onError(FacebookException error) {
 
+        }
+
+        class FB_Login extends AsyncTask<String, String, JSONObject> {
+            JSONParser jsonParser = new JSONParser();
+
+            private ProgressDialog pDialog;
+
+            private static final String LOGIN_URL = "http://www.ext.hu/fityes/api/functions.php";
+
+            private static final String TAG_SUCCESS = "success";
+            private static final String TAG_MESSAGE = "message";
+
+
+            @Override
+            protected void onPreExecute() {
+                pDialog = new ProgressDialog(Initialize.this);
+                pDialog.setMessage("Bejelentkezés...");
+                pDialog.setIndeterminate(false);
+                pDialog.setCancelable(true);
+                pDialog.show();
+            }
+
+            @Override
+            protected JSONObject doInBackground(String... args) {
+
+                try {
+
+                    HashMap<String, String> params = new HashMap<>();
+                    params.put("action", "login_fb");
+                    params.put("fb_id", args[0]);
+
+                    Log.e("FB_ID", args[0]);
+
+                    JSONObject json = jsonParser.makeHttpRequest(
+                            LOGIN_URL, "GET", params);
+
+                    Log.e("JSON_RESULT", "JSON" + json);
+
+                    if (json != null) {
+                        Log.e("JSON result", json.toString());
+                        return json;
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+
+            protected void onPostExecute(JSONObject json) {
+
+
+                int success = 0;
+                String message = "";
+
+                if (pDialog != null && pDialog.isShowing()) {
+                    pDialog.dismiss();
+                }
+
+                if (json != null) {
+                /*Toast.makeText(Initialize.this, json.toString(),
+                        Toast.LENGTH_LONG).show();*/
+
+                    try {
+                        success = json.getInt(TAG_SUCCESS);
+                        message = json.getString(TAG_MESSAGE);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                if (success == 1) {
+                    pDialog = new ProgressDialog(Initialize.this);
+                    pDialog.setMessage("Sikeres bejelentkezés...");
+                    pDialog.setIndeterminate(false);
+                    pDialog.setCancelable(true);
+                    pDialog.show();
+
+                    Toast.makeText(Initialize.this, "Szerepel az ID a táblában",
+                            Toast.LENGTH_LONG).show();
+
+                    Intent myIntent = new Intent(Initialize.this, MenuActivity.class);
+                    myIntent.putExtra("key", "2"); //Optional parameters
+                    Initialize.this.startActivity(myIntent);
+                    finish();
+
+                } else {
+
+
+                    Toast.makeText(Initialize.this, "Nem szerepelt az ID a táblában",
+                            Toast.LENGTH_LONG).show();
+                    Intent myIntent = new Intent(Initialize.this, RegWithFace.class);
+                    myIntent.putExtra("key", "2"); //Optional parameters
+                    Initialize.this.startActivity(myIntent);
+                    finish();
+                }
+            }
         }
     };
 
@@ -89,7 +194,7 @@ public class Initialize extends AppCompatActivity {
         setContentView(R.layout.activity_initialize);
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
-                    "com.example.android.facebookloginsample",  // replace with your unique package name
+                    "com.mattlab.gym.fityes_v2",  // replace with your unique package name
                     PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
@@ -191,7 +296,7 @@ public class Initialize extends AppCompatActivity {
 
         private ProgressDialog pDialog;
 
-        private static final String LOGIN_URL = "http://www.ext.hu/api/index.php";
+        private static final String LOGIN_URL = "http://www.ext.hu/fityes/api/functions.php";
 
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";

@@ -30,12 +30,16 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.profile, container, false);
         profileName = (TextView) rootView.findViewById(R.id.profileName);
+
+
         FacebookInit();
         Profile profile;
         profile = Profile.getCurrentProfile();
 
         if (profile != null) {
             profileName.setText("Név: " + profile.getName());
+            Log.e("Profil ID", profile.getId());
+
             String id = profile.getId();
 
             ProfilePictureView profileImage;
@@ -88,5 +92,6 @@ public class ProfileFragment extends Fragment {
             }
         };
     }
+
 
 }

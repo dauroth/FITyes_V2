@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mattlab.gym.fityes_v2.Activitys.Excersize;
+import com.mattlab.gym.fityes_v2.Activitys.ExcersizeList;
 import com.mattlab.gym.fityes_v2.Activitys.MenuActivity;
 import com.mattlab.gym.fityes_v2.R;
 import com.mattlab.gym.fityes_v2.Utilities.Menu.ResideMenu;
@@ -29,6 +30,14 @@ public class HomeFragment extends Fragment {
     private void setUpViews() {
         MenuActivity parentActivity = (MenuActivity) getActivity();
         resideMenu = parentActivity.getResideMenu();
+
+        parentView.findViewById(R.id.startlist).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("Breakpoint", "Start Activity");
+                startEXER_FromCard(v);
+            }
+        });
 
 
         parentView.findViewById(R.id.start_excersize).setOnClickListener(new View.OnClickListener() {
@@ -51,6 +60,13 @@ public class HomeFragment extends Fragment {
         resideMenu.addIgnoredView(ignored_view);*/
     }
 
+    public void startEXER_FromCard(View v) {
+        Intent myIntent = new Intent(getActivity(), ExcersizeList.class);
+        Log.e("Breakpoint", "Starter CLASS");
+        //myIntent.putExtra("key", "2"); //Optional parameters
+        getActivity().startActivity(myIntent);
+    }
+
 
     public void startPULSE_FromCard(View v) {
         Intent myIntent = new Intent(getActivity(), Excersize.class);
@@ -58,5 +74,6 @@ public class HomeFragment extends Fragment {
         //myIntent.putExtra("key", "2"); //Optional parameters
         getActivity().startActivity(myIntent);
     }
+
 
 }

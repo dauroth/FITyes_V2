@@ -6,9 +6,17 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import android.view.*;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.*;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.mattlab.gym.fityes_v2.R;
 import com.nineoldandroids.animation.Animator;
@@ -216,6 +224,7 @@ public class ResideMenu extends FrameLayout {
     public void setBackground(int imageResource) {
         imageViewBackground.setImageResource(imageResource);
     }
+
 
     /**
      * The visibility of the shadow under the activity;
@@ -688,12 +697,12 @@ public class ResideMenu extends FrameLayout {
         /**
          * This method will be called at the finished time of opening menu animations.
          */
-        public void openMenu();
+        void openMenu();
 
         /**
          * This method will be called at the finished time of closing menu animations.
          */
-        public void closeMenu();
+        void closeMenu();
     }
 
     private void showScrollViewMenu(View scrollViewMenu) {

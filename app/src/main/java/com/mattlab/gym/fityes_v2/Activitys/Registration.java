@@ -12,10 +12,19 @@ import com.mattlab.gym.fityes_v2.R;
 
 public class Registration extends AppCompatActivity {
 
+ /*   ProfileTracker profTrack;
+    AccessTokenTracker accessTokenTracker;
+    AccessToken accessToken;*/
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+        //FacebookInit();
+        //Profile profile;
+        //profile = Profile.getCurrentProfile();
 
         Button btn = (Button) findViewById(R.id.btn_reg_next);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -54,5 +63,47 @@ public class Registration extends AppCompatActivity {
         myIntent.putExtra("date", textDate); //Optional parameters
         Registration.this.startActivity(myIntent);
     }
+/*
+    public void FacebookInit() {
+        FacebookSdk.sdkInitialize(getApplicationContext());
 
+        accessToken = AccessToken.getCurrentAccessToken();
+
+        accessTokenTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(
+                    AccessToken oldAccessToken,
+                    AccessToken currentAccessToken) {
+                // App code
+                Log.d("current token", "" + currentAccessToken);
+                if (currentAccessToken == null) {
+                    Log.e("Facebook", "Sign OUT");
+                    Intent myIntent = new Intent(Registration.this, Initialize.class);
+                    myIntent.putExtra("key", "2"); //Optional parameters
+                    startActivity(myIntent);
+                }
+                //}
+            }
+        };
+        profTrack = new ProfileTracker() {
+            @Override
+            protected void onCurrentProfileChanged(
+                    Profile oldProfile,
+                    Profile currentProfile) {
+                // App code
+
+
+                Log.d("current profile", "" + currentProfile);
+            }
+        };
+    }
+*/
+
+    @Override
+    public void onBackPressed() {
+        Intent myIntent = new Intent(Registration.this, Initialize.class);
+        myIntent.putExtra("key", "2"); //Optional parameters
+        Registration.this.startActivity(myIntent);
+        finish();
+    }
 }

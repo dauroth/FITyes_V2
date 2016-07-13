@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.mattlab.gym.fityes_v2.R;
 import com.mattlab.gym.fityes_v2.Utilities.JSONParser;
@@ -67,7 +66,7 @@ public class ExcersizeList extends AppCompatActivity {
 
         private ProgressDialog pDialog;
 
-        private static final String json_url = "http://ext.hu/fityes/api/functions.php?action=fetchExcersize";
+        private static final String json_url = "http://ext.hu/fityes/api/functions.php?action=fetchExcersize&Level=2";
 
         private static final String TAG_SUCCESS = "success";
         private static final String TAG_MESSAGE = "message";
@@ -154,11 +153,12 @@ public class ExcersizeList extends AppCompatActivity {
                         JSONObject Jasonobject = Jarray.getJSONObject(i);
 
                         String name = Jarray.getJSONObject(i).getString("name");
+                        String link = Jarray.getJSONObject(i).getString("link");
 
-                        Log.e("First build", "A teszt kimenetele:" + Jasonobject);
-                        excersizes.add(new Excersizes(name, "Sorszám:" + i, R.drawable.test));
+                        //    Log.e("First build", "A teszt kimenetele:" + Jasonobject);
+                        excersizes.add(new Excersizes(name, link, R.drawable.test));
                         initializeAdapter();
-                        Log.e("Second Build", "Output" + name);
+                        //    Log.e("Second Build", "Output" + name);
                     }
 
                 } catch (JSONException e) {
