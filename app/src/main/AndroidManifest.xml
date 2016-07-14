@@ -48,7 +48,7 @@
             android:name=".Activitys.PulseCalculator"
             android:label="@string/pulse_label"
             android:theme="@style/Theme.AppCompat.Light" />
-        <activity android:name=".Activitys.MainActivity"></activity>
+        <activity android:name=".Activitys.MainActivity" />
         <activity android:name=".Tester.AdTester" />
         <activity android:name=".Activitys.Excersize" />
         <activity android:name=".Tester.FullAd" />
@@ -63,7 +63,8 @@
         <activity android:name=".Activitys.DisplayListView" />
         <activity android:name=".Activitys.ExcersizeList" />
         <activity android:name=".Activitys.RegWithFace" />
-        <activity android:name=".Activitys.RegWithFaceNext"></activity>
+        <activity android:name=".Activitys.RegWithFaceNext" />
+        <activity android:name=".Activitys.WeightGraph"></activity>
     </application>
 
 </manifest>

@@ -1,11 +1,15 @@
 package com.mattlab.gym.fityes_v2.Activitys;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
 
 import com.mattlab.gym.fityes_v2.R;
 import com.mattlab.gym.fityes_v2.Utilities.JSONParser;
@@ -37,12 +41,17 @@ public class ExcersizeList extends AppCompatActivity {
 
     private List<Excersizes> excersizes;
     private RecyclerView rv;
+    ArrayList<String> video_links;
+
+    FloatingActionButton FloatPlay;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_excersizelist);
+
+        video_links = new ArrayList<String>();
 
         username = "Tesztnév";
         password = "TesztPass";
@@ -57,7 +66,12 @@ public class ExcersizeList extends AppCompatActivity {
         new PostAsync().execute(username, password);
         rv.setHasFixedSize(true);
 
-
+        FloatingActionButton myFab = (FloatingActionButton) findViewById(R.id.playButton);
+        myFab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                PlayExercize(video_links);
+            }
+        });
     }
 
 
@@ -126,23 +140,7 @@ public class ExcersizeList extends AppCompatActivity {
 
                 try {
 
-                    /*jsonObject = new JSONObject(json);
-                    jsonArray = jsonObject.getJSONArray("result");
-                    int count = 0;
-                    String name, pid;
 
-                    Log.e("Kellő futásszám: ", "Érték:" + jsonArray.length());
-
-                    while (count < jsonArray.length()) {
-
-                        JSONObject JO = jsonArray.getJSONObject(count);
-                        name = JO.getString("name");
-                        pid = JO.getString("id");
-
-                        Log.e("Futások száma:", "Érték = " + count);
-
-                        count++;
-                    }*/
 
                     JSONObject object = new JSONObject(json);
                     JSONArray Jarray = object.getJSONArray("result");
@@ -154,6 +152,10 @@ public class ExcersizeList extends AppCompatActivity {
 
                         String name = Jarray.getJSONObject(i).getString("name");
                         String link = Jarray.getJSONObject(i).getString("link");
+
+                        video_links.add(link);
+
+                        Log.e("Video", "LINK:" + video_links.get(i));
 
                         //    Log.e("First build", "A teszt kimenetele:" + Jasonobject);
                         excersizes.add(new Excersizes(name, link, R.drawable.test));
@@ -174,6 +176,12 @@ public class ExcersizeList extends AppCompatActivity {
     private void initializeData(String id, String name) {
 
         excersizes.add(new Excersizes(id, name, R.drawable.test));
+    }
+
+    public void PlayExercize(ArrayList<String> video_links) {
+        Intent myIntent = new Intent(ExcersizeList.this, Excersize.class);
+        myIntent.putExtra("links", video_links); //loggedin igaz
+        ExcersizeList.this.startActivity(myIntent);
     }
 
 

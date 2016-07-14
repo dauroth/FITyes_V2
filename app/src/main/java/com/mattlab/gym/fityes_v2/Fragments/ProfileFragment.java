@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
@@ -16,6 +17,7 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.widget.ProfilePictureView;
 import com.mattlab.gym.fityes_v2.Activitys.Initialize;
+import com.mattlab.gym.fityes_v2.Activitys.WeightGraph;
 import com.mattlab.gym.fityes_v2.R;
 
 
@@ -37,7 +39,7 @@ public class ProfileFragment extends Fragment {
         profile = Profile.getCurrentProfile();
 
         if (profile != null) {
-            profileName.setText("Név: " + profile.getName());
+            profileName.setText(profile.getName());
             Log.e("Profil ID", profile.getId());
 
             String id = profile.getId();
@@ -48,6 +50,17 @@ public class ProfileFragment extends Fragment {
             profileImage.setProfileId(profile.getId());
 
         }
+
+        Button add_weight = (Button) getActivity().findViewById(R.id.add_weight);
+
+        rootView.findViewById(R.id.add_weight).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getActivity(), WeightGraph.class);
+                getActivity().startActivity(myIntent);
+            }
+        });
+
         return rootView;
     }
 

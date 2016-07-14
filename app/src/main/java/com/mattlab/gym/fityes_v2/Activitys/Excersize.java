@@ -2,20 +2,26 @@ package com.mattlab.gym.fityes_v2.Activitys;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.mattlab.gym.fityes_v2.R;
+
+import java.util.ArrayList;
 
 public class Excersize extends Activity {
     VideoView vidView;
     int VidId = 0;
     String vidAddress;
-
+    ArrayList<String> video_links;
+    int video_links_Num;
+    int i; //for while
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +30,56 @@ public class Excersize extends Activity {
         setContentView(R.layout.activity_excersize);
         Log.e("Activity, EXCERSIZE", "Started");
 
+        i = 0;
+
         vidView = (VideoView) findViewById(R.id.excersize_video);
+        video_links = new ArrayList<String>();
 
-        PlayVideo();
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            Log.e("Nincs hiba", "Tömb feltöltve");
+
+            //Előző activityből áthozott tömb lekérése
+            video_links = extras.getStringArrayList("links");
+
+            //Video link tömbjének számossága
+            video_links_Num = video_links.size();
+
+            //A TÖMB számosságának kiiratása
+            Log.e("VIDEO LINKS", "TÖMB Számossága" + video_links.size());
+
+            //Videó ciklus inditása
+            PlayVideo();
+        } else {
+
+            //Link nélküli activity inditáskor visszaléptet a lekérdezéshez
+            Log.e("HIBA", "A tömb nincs feltöltve");
+            Intent myIntent = new Intent(Excersize.this, ExcersizeList.class);
+            myIntent.putExtra("error", 0x1); //loggedin igaz
+            Excersize.this.startActivity(myIntent);
+        }
 
 
+        //VIDEO kezelő
         vidView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                VidId++;
+                i++;
                 Log.e("Videó teszt", "Videó vége, Száma: " + VidId);
+
+                //Elfogyó videók ellenőrzése
+                if (i == video_links.size()) {
+                    //Ha vége az edzésnek
+
+                    //TODO Edzés log beállitása
+                    Toast.makeText(Excersize.this, "A videók lejátszása befejeződött", Toast.LENGTH_SHORT).show();
+                    Intent myIntent = new Intent(Excersize.this, MenuActivity.class);
+                    myIntent.putExtra("error", 0x1); //loggedin igaz
+                    Excersize.this.startActivity(myIntent);
+                } else {
                 PlayVideo();
+                }//teszt
             }
         });
 
@@ -42,20 +87,19 @@ public class Excersize extends Activity {
 
     public void PlayVideo() {
 
-        if (VidId == 0) {
+        Log.e("PlayVideo", "Függvény elindult");
 
-            vidAddress = "http://ext.hu/videos/armfat.mp4";
-        } else if (VidId == 1) {
-            vidAddress = "http://ext.hu/videos/sixpack.mp4";
-        } else if (VidId == 2) {
-            vidAddress = "http://ext.hu/videos/butt.mp4";
-        } else if (VidId == 3) {
-            vidAddress = "http://ext.hu/videos/fatlose.mp4";
-        }
+
+        //CIKLUS -> Ellenőrzés
+        Log.e("PlayVideo", "Ciklus elindult, futásszáma: " + i);
+
+        //LINK -> Ellenőrzés
+        Log.e("PlayVideo", "Link: " + video_links.get(i));
+        vidAddress = video_links.get(i);
 
         Uri vidUri = Uri.parse(vidAddress);
 
-
+        //Media controller
         vidView.setVideoURI(vidUri);
         MediaController vidControl = new MediaController(this);
         vidControl.setAnchorView(vidView);
@@ -72,5 +116,19 @@ public class Excersize extends Activity {
 
             }
         });
+
+
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    public void onResume() {
+        super.onResume();
+    }
+
+    public void onPause() {
+        super.onPause();
     }
 }

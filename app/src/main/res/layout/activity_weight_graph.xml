@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_weight_graph"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.WeightGraph">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Súlyváltozás "
+        android:textSize="24sp"
+        android:id="@+id/tv"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+    <org.eazegraph.lib.charts.BarChart
+        android:id="@+id/barchart"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:padding="10dp"
+        app:egFixedBarWidth="true"
+        app:egBarWidth="20dp"
+        app:egLegendHeight="40dp"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/tv"
+        android:layout_alignParentLeft="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/button_selector"
+        android:textColor="@android:color/white"
+        android:text="Aktuális súly hozzáadása"
+        android:onClick="add_weight"
+        android:textSize="17sp"
+        android:id="@+id/add_actual_weight"
+        android:layout_gravity="center"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/barchart"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" />
+
+</RelativeLayout>
