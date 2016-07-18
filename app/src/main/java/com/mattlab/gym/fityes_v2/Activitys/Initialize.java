@@ -3,6 +3,7 @@ package com.mattlab.gym.fityes_v2.Activitys;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -10,8 +11,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -65,7 +66,6 @@ public class Initialize extends AppCompatActivity {
 
             String user_fb_id = profile.getId();
 
-            Log.e("FB_ID", user_fb_id);
 
             new FB_Login().execute(user_fb_id, "login_fb");
 
@@ -114,15 +114,12 @@ public class Initialize extends AppCompatActivity {
                     params.put("action", "login_fb");
                     params.put("fb_id", args[0]);
 
-                    Log.e("FB_ID", args[0]);
 
                     JSONObject json = jsonParser.makeHttpRequest(
                             LOGIN_URL, "GET", params);
 
-                    Log.e("JSON_RESULT", "JSON" + json);
 
                     if (json != null) {
-                        Log.e("JSON result", json.toString());
                         return json;
                     }
 
@@ -162,6 +159,11 @@ public class Initialize extends AppCompatActivity {
                     pDialog.setCancelable(true);
                     pDialog.show();
 
+                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("client_id", message);
+                    editor.apply();
+
                     Toast.makeText(Initialize.this, "Szerepel az ID a táblában",
                             Toast.LENGTH_LONG).show();
 
@@ -199,7 +201,6 @@ public class Initialize extends AppCompatActivity {
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
-                Log.e("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
         } catch (PackageManager.NameNotFoundException e) {
 
@@ -243,11 +244,6 @@ public class Initialize extends AppCompatActivity {
 
         loginButton.setReadPermissions("email");
         loginButton.registerCallback(callbackManager, callback);
-
-
-
-
-
 
         isLoggedin = false;
         firstStep = true;
@@ -422,5 +418,16 @@ public class Initialize extends AppCompatActivity {
 
     }
 
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    public void onResume() {
+        super.onResume();
+    }
+
+    public void onPause() {
+        super.onPause();
+    }
 
 }

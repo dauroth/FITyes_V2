@@ -106,5 +106,12 @@ public class ProfileFragment extends Fragment {
         };
     }
 
+    public void onResume() {
+        super.onResume();
+    }
+
+    public void onPause() {
+        super.onPause();
+    }
 
 }

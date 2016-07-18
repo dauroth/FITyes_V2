@@ -84,5 +84,16 @@ public class CalculatorFragment extends Fragment {
         getActivity().startActivity(myIntent);
     }
 
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    public void onResume() {
+        super.onResume();
+    }
+
+    public void onPause() {
+        super.onPause();
+    }
 
 }

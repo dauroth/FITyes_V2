@@ -1,8 +1,8 @@
 package com.mattlab.gym.fityes_v2.Activitys;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -30,5 +30,17 @@ public class SecondStep extends AppCompatActivity {
         Intent myIntent = new Intent(SecondStep.this, ThirdStep.class);
         myIntent.putExtra("key", "2"); //Optional parameters
         SecondStep.this.startActivity(myIntent);
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    public void onResume() {
+        super.onResume();
+    }
+
+    public void onPause() {
+        super.onPause();
     }
 }

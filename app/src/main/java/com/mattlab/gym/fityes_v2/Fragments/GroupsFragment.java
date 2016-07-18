@@ -155,4 +155,16 @@ public class GroupsFragment extends Fragment {
         }
     }
 
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    public void onResume() {
+        super.onResume();
+    }
+
+    public void onPause() {
+        super.onPause();
+    }
+
 }

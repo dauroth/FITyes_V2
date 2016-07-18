@@ -5,13 +5,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.facebook.AccessTokenTracker;
 import com.mattlab.gym.fityes_v2.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CalendarFragment extends Fragment {
 
@@ -47,5 +49,17 @@ public class CalendarFragment extends Fragment {
         ArrayList<String> calendarList = new ArrayList<String>();
         calendarList.add("Karizom edzés");
         return calendarList;
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    public void onResume() {
+        super.onResume();
+    }
+
+    public void onPause() {
+        super.onPause();
     }
 }

@@ -15,4 +15,16 @@ public class SettingsFragment extends Fragment {
         return inflater.inflate(R.layout.settings, container, false);
     }
 
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    public void onResume() {
+        super.onResume();
+    }
+
+    public void onPause() {
+        super.onPause();
+    }
+
 }

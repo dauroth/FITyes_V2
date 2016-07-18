@@ -189,4 +189,16 @@ public class ExcersizeList extends AppCompatActivity {
         RVAdapter adapter = new RVAdapter(excersizes);
         rv.setAdapter(adapter);
     }
+
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    public void onResume() {
+        super.onResume();
+    }
+
+    public void onPause() {
+        super.onPause();
+    }
 }

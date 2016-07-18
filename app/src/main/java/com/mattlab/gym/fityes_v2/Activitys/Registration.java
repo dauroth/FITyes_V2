@@ -106,4 +106,16 @@ public class Registration extends AppCompatActivity {
         Registration.this.startActivity(myIntent);
         finish();
     }
+
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    public void onResume() {
+        super.onResume();
+    }
+
+    public void onPause() {
+        super.onPause();
+    }
 }

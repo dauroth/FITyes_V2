@@ -58,4 +58,16 @@ public class FirstStep extends AppCompatActivity {
                     "Nincs kijelölve a neme", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    public void onResume() {
+        super.onResume();
+    }
+
+    public void onPause() {
+        super.onPause();
+    }
 }
