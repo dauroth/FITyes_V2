@@ -2,10 +2,12 @@ package com.mattlab.gym.fityes_v2.Activitys;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.MediaController;
 import android.widget.Toast;
@@ -78,7 +80,9 @@ public class Excersize extends Activity {
                     myIntent.putExtra("error", 0x1); //loggedin igaz
                     Excersize.this.startActivity(myIntent);
                 } else {
-                PlayVideo();
+
+                    Alert();
+
                 }//teszt
             }
         });
@@ -119,6 +123,22 @@ public class Excersize extends Activity {
 
 
     }
+
+    public void Alert() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Indulhat a következő videó?");
+        //    alert.setMessage("Message");
+
+
+        alert.setPositiveButton("Igen", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                PlayVideo();
+            }
+        });
+        alert.show();
+    }
+
 
     public void onDestroy() {
         super.onDestroy();

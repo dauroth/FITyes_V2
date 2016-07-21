@@ -23,6 +23,10 @@
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-1022277907588148/9426868513</string>
     <string name="play">Play</string>
     <string name="group">Csoport keresése</string>
+    <string name="title_activity_in_group">group_title</string>
+    <string name="action_settings">Kilépés</string>
+    <string name="section_format">Szekció: %1$d</string>
+    <string name="large_text">Bejegyzések előkészületben</string>
 
 
 </resources>

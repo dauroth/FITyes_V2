@@ -110,7 +110,7 @@
                     android:text="Eszközlista frissitése"
                     android:onClick="Login"
                     android:textSize="17sp"
-                    android:id="@+id/button3"
+                    android:id="@+id/refresh_equip"
                     android:layout_gravity="center"
                     android:layout_marginTop="35dp"
                     android:layout_below="@+id/add_weight"
@@ -129,7 +129,7 @@
                     android:id="@+id/actual_equip"
                     android:layout_gravity="center"
                     android:layout_marginTop="35dp"
-                    android:layout_below="@+id/button3"
+                    android:layout_below="@+id/refresh_equip"
                     android:layout_alignLeft="@+id/add_weight"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp" />

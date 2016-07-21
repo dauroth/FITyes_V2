@@ -27,12 +27,7 @@ import com.nineoldandroids.view.ViewHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * User: special
- * Date: 13-12-10
- * Time: 下午10:44
- * Mail: specialcyci@gmail.com
- */
+
 public class ResideMenu extends FrameLayout {
 
     public static final int DIRECTION_LEFT = 0;
@@ -674,6 +669,7 @@ public class ResideMenu extends FrameLayout {
         return super.dispatchTouchEvent(ev);
     }
 
+
     public int getScreenHeight() {
         activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         return displayMetrics.heightPixels;
@@ -716,4 +712,6 @@ public class ResideMenu extends FrameLayout {
             removeView(scrollViewMenu);
         }
     }
+
+
 }

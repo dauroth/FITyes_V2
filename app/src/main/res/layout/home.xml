@@ -62,18 +62,18 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/thumbnail"
-                android:layout_width="match_parent"
+                    android:id="@+id/thumbnail2"
+                    android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/card_img" />
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                    android:layout_below="@+id/thumbnail"
+                    android:layout_below="@+id/thumbnail2"
                     android:maxLines="3"
                     android:padding="8dp"
                     android:text="@string/has"
@@ -84,7 +84,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/title"
+                    android:layout_below="@+id/title2"
                     android:maxLines="3"
                     android:padding="8dp"
                     android:text="@string/time"

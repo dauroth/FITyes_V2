@@ -16,6 +16,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.widget.ProfilePictureView;
+import com.mattlab.gym.fityes_v2.Activitys.Equipments;
 import com.mattlab.gym.fityes_v2.Activitys.Initialize;
 import com.mattlab.gym.fityes_v2.Activitys.WeightGraph;
 import com.mattlab.gym.fityes_v2.R;
@@ -50,6 +51,15 @@ public class ProfileFragment extends Fragment {
             profileImage.setProfileId(profile.getId());
 
         }
+
+
+        rootView.findViewById(R.id.refresh_equip).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getActivity(), Equipments.class);
+                getActivity().startActivity(myIntent);
+            }
+        });
 
         Button add_weight = (Button) getActivity().findViewById(R.id.add_weight);
 

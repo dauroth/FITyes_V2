@@ -8,9 +8,9 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
+        android:largeHeap="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:largeHeap="true"
         android:theme="@style/Theme.AppCompat.Light">
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -22,7 +22,7 @@
         <activity
             android:name=".Activitys.MenuActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Light.NoTitleBar" />
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name=".Activitys.SecondStep" />
         <activity android:name=".Activitys.ThirdStep" />
         <activity
@@ -52,6 +52,17 @@
         <activity android:name=".Tester.AdTester" />
         <activity android:name=".Activitys.Excersize" />
         <activity android:name=".Tester.FullAd" />
+        <activity android:name=".Activitys.DisplayListView" />
+        <activity android:name=".Activitys.ExcersizeList" />
+        <activity android:name=".Activitys.RegWithFace" />
+        <activity android:name=".Activitys.RegWithFaceNext" />
+        <activity android:name=".Activitys.WeightGraph" />
+        <activity android:name=".Activitys.Equipments" />
+        <activity
+            android:name=".Activitys.inGroup"
+            android:label="@string/title_activity_in_group"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+
         <!--
             ATTENTION: This was auto-generated to add Google Play services to your project for
             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -60,11 +71,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".Activitys.DisplayListView" />
-        <activity android:name=".Activitys.ExcersizeList" />
-        <activity android:name=".Activitys.RegWithFace" />
-        <activity android:name=".Activitys.RegWithFaceNext" />
-        <activity android:name=".Activitys.WeightGraph"></activity>
+
     </application>
 
 </manifest>

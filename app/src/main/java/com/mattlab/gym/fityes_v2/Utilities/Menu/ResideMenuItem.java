@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.mattlab.gym.fityes_v2.R;
 
 /**
@@ -72,4 +73,5 @@ public class ResideMenuItem extends LinearLayout{
     public void setTitle(String title){
         tv_title.setText(title);
     }
+
 }

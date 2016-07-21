@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="fragment_text">
         <item name="android:textColor">#ffacacac</item>
         <item name="android:textSize">25sp</item>
     </style>
+
+    <style name="AppTheme.ActionBar.TitleTextStyle" parent="@style/Theme.AppCompat.Light">
+        <item name="android:textColor">@color/MainColor</item>
+    </style>
+
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColor">@color/MainColor</item>
+    </style>
+
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">@color/MainColor</item>
+    </style>
+
 </resources>

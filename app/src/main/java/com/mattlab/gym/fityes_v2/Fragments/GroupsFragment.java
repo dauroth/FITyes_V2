@@ -1,20 +1,19 @@
 package com.mattlab.gym.fityes_v2.Fragments;
 
-import android.content.Intent;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import com.mattlab.gym.fityes_v2.Activitys.DisplayListView;
+import com.mattlab.gym.fityes_v2.Activitys.GroupAdapter;
+import com.mattlab.gym.fityes_v2.Activitys.RVAdapter_Group;
 import com.mattlab.gym.fityes_v2.R;
-import com.mattlab.gym.fityes_v2.Utilities.Adapters.GroupAdapter;
-import com.mattlab.gym.fityes_v2.Utilities.GroupSetter;
+import com.mattlab.gym.fityes_v2.Utilities.JSONParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,46 +26,66 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupsFragment extends Fragment {
 
-    private View parentView;
     String JSON_STRING;
     String json_string;
 
     JSONObject jsonObject;
     JSONArray jsonArray;
 
-    GroupAdapter groupAdapter;
+    List<GroupAdapter> group_adapter;
+    RecyclerView rv_group;
+    ArrayList<String> group_list;
 
-    ListView listView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.groups, container, false);
 
-        new BackgroundTask().execute();
+        group_list = new ArrayList<String>();
+
+        rv_group = (RecyclerView) rootView.findViewById(R.id.rv_group);
+
+        LinearLayoutManager llm_group = new LinearLayoutManager(getActivity());
+
+        rv_group.setLayoutManager(llm_group);
+//        initializeData("Teszt", "Teszt2");
+
+        rv_group.setHasFixedSize(true);
 
 
-        return inflater.inflate(R.layout.groups, container, false);
+        new FetchGroups().execute("var1", "var2");
+
+        return rootView;
     }
 
-    public void getJSON(View view) {
 
+    class FetchGroups extends AsyncTask<String, String, String> {
+        JSONParser jsonParser = new JSONParser();
 
-    }
+        private ProgressDialog pDialog;
 
-    private class BackgroundTask extends AsyncTask<String, Void, String> {
+        private static final String json_url = "http://ext.hu/fityes/api/functions.php?action=fetchGroups";
 
-        String json_url;
+        private static final String TAG_SUCCESS = "success";
+        private static final String TAG_MESSAGE = "message";
 
 
         @Override
         protected void onPreExecute() {
-            json_url = "http://ext.hu/fityes/api/functions.php?action=fetchgroups";
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setMessage("Adatok beöltése...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
         }
 
         @Override
-        protected String doInBackground(String... params) {
+        protected String doInBackground(String... args) {
 
             try {
                 URL url = new URL(json_url);
@@ -96,63 +115,54 @@ public class GroupsFragment extends Fragment {
             return null;
         }
 
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
-        }
+        protected void onPostExecute(String json) {
 
-        protected void onPostExecute(String result) {
-            //TextView textview = (TextView) getActivity().findViewById(R.id.textView_test);
-            //textview.setText(result);
-            json_string = result;
-            if (json_string == null) {
-                Toast.makeText(getActivity(), "Hiba a lekérdezésben", Toast.LENGTH_LONG).show();
-            } else {
-                Intent intent = new Intent(getActivity(), DisplayListView.class);
-                intent.putExtra("json_data", json_string); //Optional parameters
-                getActivity().startActivity(intent);
-                Log.e("TESZTADAT", json_string);
+
+            int success = 0;
+            String message = "";
+
+            if (pDialog != null && pDialog.isShowing()) {
+                pDialog.dismiss();
+            }
+
+            if (json != null) {
+
+                try {
+
+
+                    JSONObject object = new JSONObject(json);
+
+                    JSONArray Jarray = object.getJSONArray("result");
+
+                    group_adapter = new ArrayList<>();
+                    for (int i = 0; i < Jarray.length(); i++) {
+                        JSONObject Jasonobject = Jarray.getJSONObject(i);
+
+                        String group_id = Jarray.getJSONObject(i).getString("group_id");
+                        String name = Jarray.getJSONObject(i).getString("group_name");
+                        String desc = Jarray.getJSONObject(i).getString("group_desc");
+                        String img = Jarray.getJSONObject(i).getString("group_img");
+
+                        group_list.add(desc);
+
+                        group_adapter.add(new GroupAdapter(group_id, name, desc, R.drawable.test));
+                        initializeAdapter();
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
 
             }
 
-            json_string = result;
-
         }
-
-
     }
 
-    public void parseJSON(View view) {
-
-    }
-
-    public void FillUpList() {
-        try {
-            jsonObject = new JSONObject(json_string);
-            jsonArray = jsonObject.getJSONArray("server_response");
-            int count = 0;
-            String name, desc, number;
-
-            while (count < jsonArray.length()) {
-                JSONObject JO = jsonArray.getJSONObject(count);
-                name = JO.getString("name");
-                desc = JO.getString("desc");
-                number = JO.getString("id");
-
-                GroupSetter groupSetter = new GroupSetter(name, desc, number);
-                groupAdapter.add(groupSetter);
-                count++;
-            }
-            listView = (ListView) getActivity().findViewById(R.id.listView);
-
-            groupAdapter = new GroupAdapter(getActivity(), R.layout.row_layout);
-
-            listView.setAdapter(groupAdapter);
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    private void initializeAdapter() {
+        RVAdapter_Group adapter = new RVAdapter_Group(group_adapter);
+        rv_group.setAdapter(adapter);
     }
 
     public void onDestroy() {
@@ -166,5 +176,6 @@ public class GroupsFragment extends Fragment {
     public void onPause() {
         super.onPause();
     }
+
 
 }

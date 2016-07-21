@@ -100,6 +100,12 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
     }
 
     @Override
+    public void onBackPressed() {
+
+        changeFragment(new HomeFragment());
+    }
+
+    @Override
     public void onClick(View view) {
 
         if (view == itemHome){
