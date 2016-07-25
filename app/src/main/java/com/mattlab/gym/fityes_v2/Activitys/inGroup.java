@@ -1,25 +1,34 @@
 package com.mattlab.gym.fityes_v2.Activitys;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.mattlab.gym.fityes_v2.R;
 import com.mattlab.gym.fityes_v2.Utilities.JSONParser;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.OnItemClickListener;
+import com.orhanobut.dialogplus.ViewHolder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,13 +42,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class inGroup extends AppCompatActivity {
 
     String group_id;
     String group_name;
-
+    String comment;
     String JSON_STRING;
     String json_string;
 
@@ -207,14 +217,7 @@ public class inGroup extends AppCompatActivity {
             group_id = extras.getString("group_id");
             group_name = extras.getString("group_name");
 
-
-
-
-
-/*
             getSupportActionBar().setTitle(group_name);
-            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.MainColor)));
-*/
 
             //A csoport ID-jának kiirása
             Log.e("Group ID", group_id);
@@ -236,22 +239,137 @@ public class inGroup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                DialogPlus dialog = DialogPlus.newDialog(inGroup.this)
+                final DialogPlus dialog = DialogPlus.newDialog(inGroup.this)
+                        .setContentHolder(new ViewHolder(R.layout.content_newpost))
                         .setOnItemClickListener(new OnItemClickListener() {
                             @Override
                             public void onItemClick(DialogPlus dialog, Object item, View view, int position) {
+
                             }
                         })
+                        .setGravity(Gravity.TOP)
                         .setExpanded(true)  // This will enable the expand feature, (similar to android L share dialog)
                         .create();
                 dialog.show();
 
+                EditText ingroup_comment = (EditText) findViewById(R.id.ingroup_comment);
+                ingroup_comment.requestFocus();
 
-/*                Snackbar.make(view, "Téma inditása", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(ingroup_comment, InputMethodManager.SHOW_IMPLICIT);
+
+                comment = ingroup_comment.getText().toString();
+
+                final Button SaveComment = (Button) findViewById(R.id.save_comment);
+                SaveComment.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        //TESZT
+                        EditText ingroup_comment = (EditText) findViewById(R.id.ingroup_comment);
+
+                        dialog.dismiss();
+
+                        comment = ingroup_comment.getText().toString();
+                        Log.e("Szöveg", comment);
+                        //TESZTEND
+                        Log.e("Save Comment", "Szöveg" + comment);
+
+                        Snackbar snackbar = Snackbar
+                                .make(v, "Bejegyzés mentve", Snackbar.LENGTH_LONG);
+                        snackbar.show();
+                        new addComments().execute(group_id, comment);
+
+                    }
+                });
+
             }
         });
+
+
     }
 
+    class addComments extends AsyncTask<String, String, JSONObject> {
+        JSONParser jsonParser = new JSONParser();
+
+        private ProgressDialog pDialog;
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String client_id = preferences.getString("client_id", "");
+
+        private final String json_url = "http://ext.hu/fityes/api/functions.php";
+
+        private static final String TAG_SUCCESS = "success";
+        private static final String TAG_MESSAGE = "message";
+
+
+        @Override
+        protected void onPreExecute() {
+            InputMethodManager imm = (InputMethodManager) getSystemService(
+                    INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+
+            pDialog = new ProgressDialog(inGroup.this);
+            pDialog.setMessage("Bejegyzés mentése...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+
+            Log.e("URL", json_url);
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... args) {
+
+            try {
+
+                Log.e("Szóköz próba", comment);
+
+                HashMap<String, String> params = new HashMap<>();
+                params.put("action", "addComment");
+                params.put("group_id", group_id);
+                params.put("client_id", client_id);
+                params.put("comment", comment);
+
+                Log.d("request", "starting");
+
+                JSONObject json = jsonParser.makeHttpRequest(
+                        json_url, "POST", params);
+
+                if (json != null) {
+                    Log.d("JSON result", json.toString());
+                    return json;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        protected void onPostExecute(JSONObject json) {
+
+
+            int success = 0;
+            String message = "";
+
+            if (pDialog != null && pDialog.isShowing()) {
+                pDialog.dismiss();
+                new fetchComments().execute(group_id, "var2");
+            }
+            if (json != null) {
+                /*Toast.makeText(Initialize.this, json.toString(),
+                        Toast.LENGTH_LONG).show();*/
+
+                try {
+                    success = json.getInt(TAG_SUCCESS);
+                    message = json.getString(TAG_MESSAGE);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
 }

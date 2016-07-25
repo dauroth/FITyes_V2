@@ -2,8 +2,10 @@ package com.mattlab.gym.fityes_v2.Activitys;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -180,6 +182,11 @@ public class RegWithFace extends AppCompatActivity {
                 pDialog.show();
 
                 user_id = message;
+
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("client_id", user_id);
+                editor.apply();
 
 
                 Intent myIntent = new Intent(RegWithFace.this, RegWithFaceNext.class);

@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -54,20 +53,37 @@ public class Initialize extends AppCompatActivity {
 
 
     private FacebookCallback<LoginResult> callback = new FacebookCallback<LoginResult>() {
+
+        private ProfileTracker mProfileTracker;
+
         @Override
         public void onSuccess(LoginResult loginResult) {
-            AccessToken accessToken = loginResult.getAccessToken();
-            Profile profile = Profile.getCurrentProfile();
+
+            if (Profile.getCurrentProfile() == null) {
+                mProfileTracker = new ProfileTracker() {
+                    @Override
+                    protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
+                        // profile2 is the new profile
+                        Log.e("facebook-profile-change", profile2.getFirstName());
+
+                        String user_fb_id = profile2.getId();
+                        new FB_Login().execute(user_fb_id, "login_fb");
+                        mProfileTracker.stopTracking();
+                    }
+                };
+            } else {
+                Profile profile = Profile.getCurrentProfile();
+
+                String user_fb_id = profile.getId();
+                new FB_Login().execute(user_fb_id, "login_fb");
+            }
+
             ProgressDialog pDialog = new ProgressDialog(Initialize.this);
             pDialog.setMessage("Bejelentkezés...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
 
-            String user_fb_id = profile.getId();
-
-
-            new FB_Login().execute(user_fb_id, "login_fb");
 
             /*Intent myIntent = new Intent(Initialize.this, MenuActivity.class);
             myIntent.putExtra("key", "2"); //Optional parameters
@@ -109,10 +125,14 @@ public class Initialize extends AppCompatActivity {
             protected JSONObject doInBackground(String... args) {
 
                 try {
+                    Profile profile = Profile.getCurrentProfile();
+                    String user_fb_id = profile.getId();
+
+                    Log.e("USER_FB_ID", user_fb_id);
 
                     HashMap<String, String> params = new HashMap<>();
                     params.put("action", "login_fb");
-                    params.put("fb_id", args[0]);
+                    params.put("fb_id", user_fb_id);
 
 
                     JSONObject json = jsonParser.makeHttpRequest(
@@ -141,12 +161,19 @@ public class Initialize extends AppCompatActivity {
                 }
 
                 if (json != null) {
-                /*Toast.makeText(Initialize.this, json.toString(),
-                        Toast.LENGTH_LONG).show();*/
+
 
                     try {
                         success = json.getInt(TAG_SUCCESS);
                         message = json.getString(TAG_MESSAGE);
+
+                        //   Log.e("VISSZATÉRÉSI ÉRTÉK:", "Teszt:" + success + message);
+
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("client_id", message);
+                        editor.apply();
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -284,6 +311,7 @@ public class Initialize extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Bundle bundle = data.getExtras();
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 

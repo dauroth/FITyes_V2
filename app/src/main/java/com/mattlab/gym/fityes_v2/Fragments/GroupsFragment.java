@@ -3,17 +3,24 @@ package com.mattlab.gym.fityes_v2.Fragments;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.EditText;
 
 import com.mattlab.gym.fityes_v2.Activitys.GroupAdapter;
 import com.mattlab.gym.fityes_v2.Activitys.RVAdapter_Group;
 import com.mattlab.gym.fityes_v2.R;
 import com.mattlab.gym.fityes_v2.Utilities.JSONParser;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.OnItemClickListener;
+import com.orhanobut.dialogplus.ViewHolder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,6 +67,28 @@ public class GroupsFragment extends Fragment {
 
         new FetchGroups().execute("var1", "var2");
 
+        SearchButton();
+        FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab_group);
+
+        EditText group_search = (EditText) rootView.findViewById(R.id.group_search);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final DialogPlus dialog = DialogPlus.newDialog(getActivity())
+                        .setContentHolder(new ViewHolder(R.layout.content_searchgroup))
+                        .setOnItemClickListener(new OnItemClickListener() {
+                            @Override
+                            public void onItemClick(DialogPlus dialog, Object item, View view, int position) {
+
+                            }
+                        })
+                        .setGravity(Gravity.TOP)
+                        .setExpanded(true)  // This will enable the expand feature, (similar to android L share dialog)
+                        .create();
+                dialog.show();
+            }
+        });
         return rootView;
     }
 
@@ -163,6 +192,11 @@ public class GroupsFragment extends Fragment {
     private void initializeAdapter() {
         RVAdapter_Group adapter = new RVAdapter_Group(group_adapter);
         rv_group.setAdapter(adapter);
+    }
+
+    public void SearchButton() {
+
+
     }
 
     public void onDestroy() {

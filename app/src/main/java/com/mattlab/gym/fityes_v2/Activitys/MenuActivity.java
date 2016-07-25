@@ -28,6 +28,8 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
     private ResideMenuItem itemCalculator;
     private ResideMenuItem itemGroups;
 
+    String user_id;
+
     /**
      * Called when the activity is first created.
      */
@@ -39,6 +41,11 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         setUpMenu();
         if( savedInstanceState == null )
             changeFragment(new HomeFragment());
+
+        //Bundle
+        Bundle extras = getIntent().getExtras();
+        //ExtraString
+        user_id = extras.getString("user_id");
 
 
     }

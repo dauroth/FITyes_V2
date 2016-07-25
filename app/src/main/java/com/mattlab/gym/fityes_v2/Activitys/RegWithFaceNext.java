@@ -2,9 +2,12 @@ package com.mattlab.gym.fityes_v2.Activitys;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -41,6 +44,13 @@ public class RegWithFaceNext extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         //ExtraString
         user_id = extras.getString("user_id");
+
+        Log.e("RegID", user_id);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("client_id", user_id);
+        editor.apply();
 
         Button btn = (Button) findViewById(R.id.eq_reg_fb);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +148,12 @@ public class RegWithFaceNext extends AppCompatActivity {
                 pDialog.setCancelable(true);
                 pDialog.show();
 
-                user_id = message;
+                //Bundle
+                Bundle extras = getIntent().getExtras();
+                //ExtraString
+                user_id = extras.getString("user_id");
+
+
 
 
                 Intent myIntent = new Intent(RegWithFaceNext.this, MenuActivity.class);

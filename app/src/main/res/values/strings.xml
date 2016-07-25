@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FITYES Beta</string>
+    <string name="app_name" translatable="false">Over The Wod</string>
     <string name="firststep">Első lépések</string>
     <string name="facebook_app_id" translatable="false">855021101271180</string>
     <string name="fb_login_protocol_scheme" translatable="false">855021101271180</string>
