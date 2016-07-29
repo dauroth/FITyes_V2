@@ -17,8 +17,8 @@
     <string name="pulse">Edzési pulzustartomány kalkulátor</string>
     <string name="pulsedesc">Számolja ki Ön is edzéscéljához megfelelő pulzustartományt!</string>
     <string name="startPulse">Inditás</string>
-    <string name="pulse_label">FITYES Beta - Pulzus kalkulátor</string>
-    <string name="bmi_label">FITYES Beta - BMI kalkulátor</string>
+    <string name="pulse_label">Over The Wod Beta - Pulzus kalkulátor</string>
+    <string name="bmi_label">Over The Wod Beta - BMI kalkulátor</string>
     <string name="title_activity_settings">Beállitások</string>
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-1022277907588148/9426868513</string>
     <string name="play">Play</string>
